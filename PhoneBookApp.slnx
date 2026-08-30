@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/Database/" />
+  <Project Path="ConsoleUI/ConsoleUI.csproj" Id="02401f89-ccea-463f-b021-6c6118666d37" />
+  <Project Path="PhoneBookApp/PhoneBookApp.csproj" />
+</Solution>
