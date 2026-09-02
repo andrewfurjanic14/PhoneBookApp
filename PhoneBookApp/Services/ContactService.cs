@@ -15,11 +15,38 @@ namespace PhoneBookApp.Services
         {
             _db = db;
         }
-
-        /*public async Task<List<Contact>> GetAllAsync()
+        public async Task AddAsync(Contact contact)
         {
+            _db.Contacts.Add(contact);
+            await _db.SaveChangesAsync();
+        }
 
-        }*/
+        public async Task<List<Contact>> GetAllAsync()
+            => await _db.Contacts.ToListAsync();
+        
+        public async Task<Contact?> GetByIdAsync(int id)
+        {
+            return await _db.Contacts
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
+        }
 
+        public async Task UpdateAsync(Contact contact)
+        {
+            _db.Contacts.Update(contact);
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(Contact contact)
+        {
+            _db.Contacts.Remove(contact);
+        }
+
+        public async Task DeleteByIdAsync(int id)
+        {
+            await _db.Contacts
+                .Where(x => x.Id == id)
+                .ExecuteDeleteAsync();
+        }
     }
 }
