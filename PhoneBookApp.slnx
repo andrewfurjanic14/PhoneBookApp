@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="ConsoleUI/ConsoleUI.csproj" Id="02401f89-ccea-463f-b021-6c6118666d37" />
   <Project Path="PhoneBookApp/PhoneBookApp.csproj" />
+  <Project Path="RandomUserGenerator/RandomUserGenerator.csproj" Id="2768e6d5-038d-4429-b489-a379ff25665e" />
 </Solution>

@@ -12,6 +12,11 @@ namespace PhoneBookApp.Data
     internal class AppDbContext : DbContext
     {
         public DbSet<Contact> Contacts => Set<Contact>();
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Contact>().HasData(
+                );
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
