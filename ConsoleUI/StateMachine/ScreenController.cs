@@ -11,12 +11,12 @@ namespace ConsoleUI.StateMachine
         
         public ScreenController(ScreenState root) => _stateStack.Push(root);
 
-        public void Run()
+        public async Task RunAsync()
         {
             while (_stateStack.Count > 0)
             {
                 AnsiConsole.Clear();
-                var action = _stateStack.Peek().Run();
+                var action = await _stateStack.Peek().RunAsync();
 
                 switch (action)
                 {

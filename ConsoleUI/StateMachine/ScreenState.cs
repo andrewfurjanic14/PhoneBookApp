@@ -2,6 +2,7 @@
 {
     public abstract class ScreenState
     {
-        public abstract ScreenAction Run();
+        public virtual string? Name { get; set; } = null;
+        public abstract Task<ScreenAction> RunAsync();
     }
 }
