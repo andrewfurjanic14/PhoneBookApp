@@ -12,6 +12,15 @@ namespace PhoneBookApp.Models
         public required string Email { get; set; }
         public required string PhoneNumber { get; set; }
 
+        public static Contact NameOnlySentinel(string name)
+        {
+            return new Contact 
+            {
+                FirstName = name,
+                LastName = "",
+                Email = "",
+                PhoneNumber = ""
+            };
+        }
     }
-
 }

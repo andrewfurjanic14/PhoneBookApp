@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ConsoleUI.StateMachine
 {
-    internal class ScreenController
+    public class ScreenController
     {
         private readonly Stack<ScreenState> _stateStack = new();
         

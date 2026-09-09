@@ -1,7 +1,9 @@
 ﻿using PhoneBookApp.Data;
 using PhoneBookApp.Services;
+using PhoneBookApp.UI;
 using RandomUserGenerator;
 using RandomUserGenerator.Models;
+using ConsoleUI.StateMachine;
 
 namespace PhoneBookApp
 {
@@ -16,7 +18,7 @@ namespace PhoneBookApp
 
                 var gen = await RandUserGen.CreateAsync();
                 var randUsers = gen.GenerateRandomUsers(20);
-                foreach (var user in randUsers)
+                /*foreach (var user in randUsers)
                 {
                     string output = $"""
                         {user.FirstName} {user.LastName}
@@ -25,7 +27,9 @@ namespace PhoneBookApp
 
                         """;
                     Console.WriteLine(output);
-                }
+                }*/
+                var screenController = new ScreenController(new MainMenu(contactService));
+                await screenController.RunAsync();
             }
             catch (Exception ex)
             {
