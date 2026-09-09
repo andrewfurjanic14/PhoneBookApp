@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RandomUserGenerator.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -20,6 +21,17 @@ namespace PhoneBookApp.Models
                 LastName = "",
                 Email = "",
                 PhoneNumber = ""
+            };
+        }
+
+        public static Contact FromUser(User user)
+        {
+            return new Contact
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
             };
         }
     }

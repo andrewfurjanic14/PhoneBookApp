@@ -20,6 +20,14 @@ namespace PhoneBookApp.Services
             _db.Contacts.Add(contact);
             await _db.SaveChangesAsync();
         }
+        public async Task AddAsync(List<Contact> contacts)
+        {
+            foreach (Contact c in contacts)
+            {
+            _db.Contacts.Add(c);
+            }
+            await _db.SaveChangesAsync();
+        }
 
         public async Task<List<Contact>> GetAllAsync()
             => await _db.Contacts.ToListAsync();

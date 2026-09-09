@@ -4,6 +4,7 @@ using PhoneBookApp.UI;
 using RandomUserGenerator;
 using RandomUserGenerator.Models;
 using ConsoleUI.StateMachine;
+using PhoneBookApp.Models;
 
 namespace PhoneBookApp
 {
@@ -16,18 +17,16 @@ namespace PhoneBookApp
                 var _db = new AppDbContext();
                 var contactService = new ContactService(_db);
 
-                var gen = await RandUserGen.CreateAsync();
+                // generate some random users for testing
+                /*var gen = await RandUserGen.CreateAsync();
                 var randUsers = gen.GenerateRandomUsers(20);
-                /*foreach (var user in randUsers)
+                List<Contact> contacts = new List<Contact>();
+                foreach (var user in  randUsers)
                 {
-                    string output = $"""
-                        {user.FirstName} {user.LastName}
-                        Email: {user.Email}
-                        Phone Number: {user.PhoneNumber}
+                    contacts.Add(Contact.FromUser(user));
+                }
+                await contactService.AddAsync(contacts);*/
 
-                        """;
-                    Console.WriteLine(output);
-                }*/
                 var screenController = new ScreenController(new MainMenu(contactService));
                 await screenController.RunAsync();
             }
