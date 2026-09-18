@@ -48,6 +48,7 @@ namespace PhoneBookApp.Services
         public async Task DeleteAsync(Contact contact)
         {
             _db.Contacts.Remove(contact);
+            await _db.SaveChangesAsync();
         }
 
         public async Task DeleteByIdAsync(int id)

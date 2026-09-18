@@ -3,10 +3,6 @@ using PhoneBookApp.Data.DTOs;
 using PhoneBookApp.Models;
 using PhoneBookApp.Services;
 using Spectre.Console;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml.Serialization;
 
 namespace PhoneBookApp.UI
 {
@@ -23,19 +19,25 @@ namespace PhoneBookApp.UI
 
             contacts.Insert(0, exitSentinel);
             contacts.Insert(0, backSentinel);
-            Contact choice;
-            do
-            {
-                choice = AnsiConsole.Prompt(
-                    new SelectionPrompt<Contact>()
-                        .AddChoices(contacts)
-                        .UseConverter(c => ContactDto.DtoFromContact(c).ToString())
-                        );
-            } while (choice != exitSentinel && choice != backSentinel);
 
-            return choice == exitSentinel
-                ? new Exit()
-                : new Back();
+            var choice = AnsiConsole.Prompt(
+                new SelectionPrompt<Contact>()
+                    .AddChoices(contacts)
+                    .UseConverter(c => ContactDto.DtoFromContact(c).ToString())
+                    );
+
+            if (choice == exitSentinel)
+            {
+                return new Exit();
+            }
+            else if (choice == backSentinel)
+            {
+                return new Back();
+            }
+            else
+            {
+                return new GoTo(new EditContactScreen(_contactService, contact: choice));
+            }
         }
 
     }

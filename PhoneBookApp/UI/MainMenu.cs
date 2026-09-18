@@ -16,7 +16,8 @@ namespace PhoneBookApp.UI
             ScreenState[] choices =
             {
                 exitSentinel,
-                new ViewContactsScreen(_contactService)
+                new ViewContactsScreen(_contactService),
+                new AddContactScreen(_contactService),
             };
 
             var choice = AnsiConsole.Prompt(

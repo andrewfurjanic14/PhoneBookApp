@@ -13,6 +13,15 @@ namespace PhoneBookApp.Models
         public required string Email { get; set; }
         public required string PhoneNumber { get; set; }
 
+        public override string ToString()
+        {
+            return $"""
+                {FirstName} {LastName}
+                Email: {Email}
+                Phone Number: {PhoneNumber}
+                """;
+        }
+
         public static Contact NameOnlySentinel(string name)
         {
             return new Contact 
